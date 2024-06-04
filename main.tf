@@ -1,5 +1,9 @@
 data "aws_region" "current" {}
 
+provider "aws"{
+region = "ap-south-1"
+}
+
 data "aws_canonical_user_id" "this" {
   count = local.create_bucket && local.create_bucket_acl && try(var.owner["id"], null) == null ? 1 : 0
 }
